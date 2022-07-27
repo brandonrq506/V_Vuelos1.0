@@ -5,7 +5,7 @@ import Router from './components/Helpers/Router';
 
 const App = () => {
   console.log('App.js')
-  const isLogged = true;
+  const isLogged = false;
 
   return (
     <div className='App'>

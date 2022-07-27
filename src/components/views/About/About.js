@@ -1,8 +1,10 @@
+import styles from './About.module.css';
+
 const About = () => {
     return (
-        <div>
+        <main className={styles.main}>
             <p>This is the about page...</p>
-        </div>
+        </main>
     );
 }
 

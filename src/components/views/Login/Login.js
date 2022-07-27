@@ -1,10 +1,11 @@
+import styles from './Login.module.css';
 
 const Login = () => {
     console.log('Login.js')
     return (
-        <div>
-            <h1>Thi is a login page</h1>
-        </div>
+        <main className={styles.main}>
+            <h1>This is a login page</h1>
+        </main>
     );
 }
 

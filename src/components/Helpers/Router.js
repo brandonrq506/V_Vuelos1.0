@@ -1,4 +1,5 @@
 import { Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import Home from '../Views/Home';
 import Login from '../Views/Login';
 import About from '../Views/About';
@@ -6,21 +7,25 @@ import About from '../Views/About';
 const Router = props => {
     console.log('Router.js')
     return (
-        <Switch>
-            <Route path='/' exact >
-                {props.isLogged && <Redirect to='/home' />}
-                {!props.isLogged && <Redirect to='/login' />}
-            </Route>
-            <Route path='/home'>
-                <Home />
-            </Route>
-            <Route path='/login'>
-                <Login />
-            </Route>
-            <Route path='/about'>
-                <About />
-            </Route>
-        </Switch>
+        <BrowserRouter>
+            <Switch>
+                <Route path='/' exact >
+                    {props.isLogged && <Redirect to='/home' />}
+                    {!props.isLogged && <Redirect to='/login' />}
+                </Route>
+                <Route path='/home'>
+                    {!props.isLogged && <Redirect to='/login' />}
+                    <Home />
+                </Route>
+                <Route path='/login'>
+                    {props.isLogged && <Redirect to='/home' />}
+                    <Login />
+                </Route>
+                <Route path='/about'>
+                    <About />
+                </Route>
+            </Switch>
+        </BrowserRouter>
     );
 }
 
