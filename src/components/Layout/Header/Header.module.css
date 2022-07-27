@@ -1,0 +1,21 @@
+.header {
+    background-color: rgb(209, 209, 209);
+    height: 13vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    overflow: hidden;
+    background: url('../../../assets/planeWing.jpg');
+    padding: 10px;
+    background-position-y: -1140px;
+}
+
+.h3 {
+    margin: 0;
+    font-size: 40px;
+}
+
+.img {
+    width: 100px;
+}
