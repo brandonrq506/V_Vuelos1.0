@@ -1,6 +1,6 @@
 .header {
     background-color: rgb(209, 209, 209);
-    height: 13vh;
+    height: 20vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -11,11 +11,6 @@
     background-position-y: -1140px;
 }
 
-.h3 {
-    margin: 0;
-    font-size: 40px;
-}
-
-.img {
+img {
     width: 100px;
 }

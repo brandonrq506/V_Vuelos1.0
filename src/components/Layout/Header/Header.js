@@ -1,10 +1,14 @@
 import styles from './Header.module.css';
+import Logo from '../../../assets/Logo.png';
+import UserInfo from './components/UserInfo';
 
 const Header = () => {
     console.log('Header.js');
+
     return (
         <header className={styles.header} >
-            <h1>I am a header</h1>
+            <img src={Logo} alt="" />
+            <UserInfo />
         </header>
     );
 }
