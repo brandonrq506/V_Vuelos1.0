@@ -5,12 +5,11 @@ import Router from './components/Helpers/Router';
 
 const App = () => {
   console.log('App.js')
-  const isLogged = false;
 
   return (
     <div className='App'>
       <Header />
-      <Router isLogged={isLogged} />
+      <Router />
       <Footer />
     </div >
   );

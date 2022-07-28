@@ -1,24 +1,30 @@
-import { Route, Switch, Redirect } from "react-router-dom";
-import { BrowserRouter } from 'react-router-dom';
+import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
+
+import { useContext } from 'react';
+import LoginContext from '../Context/login-context';
+
 import Home from '../Views/Home';
 import Login from '../Views/Login';
 import About from '../Views/About';
 
-const Router = props => {
+const Router = () => {
     console.log('Router.js')
+
+    const loginContext = useContext(LoginContext);
+
     return (
         <BrowserRouter>
             <Switch>
                 <Route path='/' exact >
-                    {props.isLogged && <Redirect to='/home' />}
-                    {!props.isLogged && <Redirect to='/login' />}
+                    {loginContext.isLoggedIn && <Redirect to='/home' />}
+                    {!loginContext.isLoggedIn && <Redirect to='/login' />}
                 </Route>
                 <Route path='/home'>
-                    {!props.isLogged && <Redirect to='/login' />}
+                    {!loginContext.isLoggedIn && <Redirect to='/login' />}
                     <Home />
                 </Route>
                 <Route path='/login'>
-                    {props.isLogged && <Redirect to='/home' />}
+                    {loginContext.isLoggedIn && <Redirect to='/home' />}
                     <Login />
                 </Route>
                 <Route path='/about'>
