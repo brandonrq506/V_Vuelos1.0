@@ -1,11 +1,15 @@
 import { useState } from 'react';
 
+import { useContext } from 'react';
+import LoginContext from '../../../Context/login-context';
+
 import Card from '../../../common/Card';
 import Input from '../../../common/Input';
 import Button from '../../../common/Button';
 import styles from './Login-Form.module.css';
 
 const LoginForm = () => {
+    const loginContext = useContext(LoginContext);
 
     const [username, setUsername] = useState('');
     const [pass, setPass] = useState('');
@@ -15,8 +19,7 @@ const LoginForm = () => {
 
     const submitHandler = e => {
         e.preventDefault();
-        console.log(username)
-        console.log(pass)
+        loginContext.onLogin(username, pass);
     }
 
     return (
