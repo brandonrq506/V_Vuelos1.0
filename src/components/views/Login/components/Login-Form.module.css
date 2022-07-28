@@ -1,0 +1,23 @@
+.login {
+    width: 90%;
+    max-width: 40rem;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.header {
+    background: rgb(29, 35, 83);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.header h2 {
+    margin: 0;
+    color: white;
+}
+
+.actions {
+    text-align: center;
+}
