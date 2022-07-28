@@ -15,6 +15,7 @@ export const LoginContextProvider = props => {
         localStorage.getItem('username') ? true : false
     );
 
+
     const logoutHandler = () => {
         localStorage.removeItem('username');
         localStorage.removeItem('correo');
@@ -36,15 +37,24 @@ export const LoginContextProvider = props => {
         value={{
             isLoggedIn: isLoggedIn,
             onLogout: logoutHandler,
-            onLogin: loginHandler
+            onLogin: loginHandler,
+            user: {
+                username: localStorage.getItem('username'),
+                correo: localStorage.getItem('correo'),
+                rol: localStorage.getItem('rol')
+            }
         }}
     >
         {props.children}
     </LoginContext.Provider>
 }
 
-
-
-
-
 export default LoginContext;
+
+/**
+ * ====== Eligible for re-factoring ======
+ * 
+ * There must be a better way to get the user information instead of doing
+ * localStorage.get('Attribute') for every property.
+ * I was thinking on useEffect() however, that re-loads the page.
+ */
