@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { getUser } from '../api/user';
 //We use this context to import information to other files
 //Other files get login information from this context object.
 const LoginContext = React.createContext({
@@ -10,26 +11,25 @@ const LoginContext = React.createContext({
 
 //Used to wrapped up App.js
 export const LoginContextProvider = props => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    useEffect(() => {
-        const isUserLoggedIn = localStorage.getItem('isLoggedIn');
-        if (isUserLoggedIn === '1')
-            setIsLoggedIn(true);
-
-        return () => {
-            //cleanup
-        };
-    }, []);
+    const [isLoggedIn, setIsLoggedIn] = useState(
+        localStorage.getItem('username') ? true : false
+    );
 
     const logoutHandler = () => {
-        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('username');
+        localStorage.removeItem('correo');
+        localStorage.removeItem('rol');
         setIsLoggedIn(false);
     }
-    const loginHandler = (username, password) => {
-        console.log('Trying to login', username, password)
-        localStorage.setItem('isLoggedIn', '1');
-        setIsLoggedIn(true);
+
+    const loginHandler = async (username, password) => {
+        let user = await getUser(username)
+        if (user.contrasena === password) {
+            localStorage.setItem('username', user.usuario1);
+            localStorage.setItem('correo', user.correo);
+            localStorage.setItem('rol', user.rol);
+            setIsLoggedIn(true);
+        }
     }
 
     return <LoginContext.Provider
