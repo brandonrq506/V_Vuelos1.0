@@ -4,11 +4,11 @@ import { getRol } from "./rol";
 const baseUrl = 'http://localhost:58214/api/Usuarios/';
 
 export const getUser = async (username) => {
-    let response = await axios.get(`${baseUrl}${username}`);
-    let user = response.data;
-    let rol = await getRol(user.rol);
-    user.rol = rol;
-    return user;
+  let response = await axios.get(`${baseUrl}${username}`);
+  let user = response.data;
+  let rol = await getRol(user.rol);
+  user.rol = rol;
+  return user;
 }
 
 
